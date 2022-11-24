@@ -1,19 +1,20 @@
 # Imports
+from Updater import downloader
+downloader()
+
 import random
 import math
 from PIL import Image
 from colorama import Fore
 from pyfiglet import Figlet
-import itertools
-import threading
 import time
-import sys
+
 
 # Pyfiglet Banner
 custom_fig = Figlet(font='graffiti')
 print(Fore.RED+custom_fig.renderText('ColorCrypt'))
 print(Fore.YELLOW+'-'*10+"INFO"+'-'*10)
-print(Fore.YELLOW+"This is a text to binary image encoder. The text you input will be encoded into binary, and then")
+print(Fore.YELLOW+"This is a text to binary image encoder. The text you input will be encoded into binary, and then outputted to an image, with each \npixel containing a binary digit based off the divider key you will input. Read the .README for a full manual on how to use, and report any bugs or suggestions at: https://github.com/CrashPit/ColorCrypt")
 
 # Binary Converter
 def toBinary(a):
@@ -25,7 +26,7 @@ def toBinary(a):
   return m
 
 # Var Init
-usrinpt = input(Fore.YELLOW+"[~CRYPT~] Input a string to convert to binary: ")
+usrinpt = input(Fore.YELLOW+"\n[~CRYPT~] Input a string to convert to binary: ")
 usrbin = ' '.join(str(e) for e in toBinary(usrinpt)) # .replace(" ", "")
 res = math.ceil(math.sqrt(len(usrbin)))
 
@@ -53,16 +54,6 @@ for i in iter(usrbin):
     img.putpixel((xplace,yplace), (random.randint(126,255),random.randint(1,255),random.randint(1,255)))
   xplace += 1
 
-# 100% Working Loading Animation
-def animate():
-    for c in itertools.cycle(['..', '.']):
-        if done:
-            break
-        sys.stdout.write(Fore.LIGHTGREEN_EX+'\rLoading' + c)
-        sys.stdout.flush()
-        time.sleep(0.01)
-t = threading.Thread(target=animate)
-t.start()
 time.sleep(4)
 
 # Image Save & Exit
