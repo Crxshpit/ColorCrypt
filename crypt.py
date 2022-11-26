@@ -1,16 +1,12 @@
 # Imports
 from updater import downloader
-downloader()
+downloader() # Checks if required libraries are installed and installs them
 
-import random
-import math
-from PIL import Image
 from colorama import Fore
 from pyfiglet import Figlet
-import time
 from encryptor import encryptor
 
-# Pyfiglet Banner
+# Banner
 custom_fig = Figlet(font='graffiti')
 print(Fore.RED+custom_fig.renderText('ColorCrypt'))
 
@@ -24,7 +20,6 @@ while True:
     encryptor()
     break
   if s == 'b':
-
     break
   else:
     print(Fore.RED+"[~CRYPT~] Error! Invalid Input.")
