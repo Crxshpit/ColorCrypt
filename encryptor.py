@@ -15,7 +15,7 @@ def toBinary(a):
 
 # Encryptor function
 def encryptor():
-    print(Fore.YELLOW+"\n--COLOR-CRYPT ENCODER--")
+    print(Fore.BLUE+"\n--COLOR-CRYPT ENCODER--")
 
     # Variable init
     while True:
@@ -43,7 +43,7 @@ def encryptor():
 
     # Terminal Output
     print(Fore.YELLOW+"[~CRYPT~] The image Resolution is",Fore.LIGHTBLUE_EX+f"{res} by {res} pixels ({res*10} by {res*10} in true pixels).")
-    print(Fore.YELLOW+f"[~CRYPT~] The character length of the translated binary is {Fore.LIGHTBLUE_EX+str(len(usrbin))} digits long.")
+    print(Fore.YELLOW+f"[~CRYPT~] The character length of the translated binary is {Fore.LIGHTBLUE_EX+str(len(usrbin.replace(' ', '')))} digits long.")
     print(Fore.YELLOW+"[~CRYPT~] The binary is",Fore.LIGHTBLUE_EX+usrbin)
 
     # Init Image
