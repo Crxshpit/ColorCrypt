@@ -8,7 +8,7 @@ from encryptor import encryptor
 from decryptor import decryptor
 
 # Banner
-custom_fig = Figlet(font='graffiti')
+custom_fig = Figlet(font='chunky')
 print(Fore.RED+custom_fig.renderText('ColorCrypt'))
 
 print(Fore.YELLOW+'-'*10+"INFO"+'-'*10)

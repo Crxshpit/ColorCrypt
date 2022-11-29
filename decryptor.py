@@ -9,10 +9,10 @@ def decryptor():
 
     # Attempting image open
     while True:
-            print(Fore.YELLOW+"\n[~CRYPT~] Put the image you wish to decrypt into the folder 'Decryptor Input'. The image must be named 'encrypted_image.png'. Checking for image in 10 seconds...")
+            print(Fore.YELLOW+"\n[~CRYPT~] Put the image you wish to decrypt into the folder 'Decryptor_Input'. The image must be named 'encrypted_image.png'. Checking for image in 10 seconds...")
             time.sleep(10)
             try:
-                img = Image.open('./Decryptor Input/encrypted_image.png')
+                img = Image.open('Decryptor_Input/encrypted_image.png')
                 imgheight = int(img.height)
                 imgwidth = int(img.width)
                 if imgheight > 900 or imgwidth > 900:

@@ -67,8 +67,8 @@ def encryptor():
             xplace += 1
 
     imgu = img.resize((res*10, res*10), resample=Image.BOX)
-    print(Fore.YELLOW+"[~CRYPT~] Image created successfully! Generated image saved to 'Encryptor Output'.")
+    print(Fore.YELLOW+"[~CRYPT~] Image created successfully! Generated image saved to 'Encryptor_Output'.")
     imgu.show()
-    imgu.save('./Encryptor Output/encrypted_image.png')
+    imgu.save('./Encryptor_Output/encrypted_image.png')
     exit()
 
