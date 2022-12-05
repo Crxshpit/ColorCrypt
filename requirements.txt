@@ -1,0 +1,6 @@
+colorama
+pyfiglet
+Pillow
+time
+math
+random

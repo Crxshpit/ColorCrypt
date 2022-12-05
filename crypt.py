@@ -1,7 +1,4 @@
 # Imports
-from updater import downloader
-downloader() # Checks if required libraries are installed and installs them
-
 from colorama import Fore
 from pyfiglet import Figlet
 from encryptor import encryptor
