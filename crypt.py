@@ -1,8 +1,10 @@
 # Imports
-from colorama import Fore
+from colorama import Fore, init
 from pyfiglet import Figlet
 from encryptor import encryptor
 from decryptor import decryptor
+
+init(convert=True)
 
 # Banner
 custom_fig = Figlet(font='chunky')
