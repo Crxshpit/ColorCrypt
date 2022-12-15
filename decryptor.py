@@ -10,11 +10,12 @@ def decryptor():
     # Attempting image open
     while True:
             print(Fore.YELLOW+"\n[~CRYPT~] Put the image you wish to decrypt into the folder 'Decryptor_Input'. The image must be named 'encrypted_image.png'. Checking for image in 10 seconds...")
-            time.sleep(10)
+            time.sleep(5)
             try:
                 img = Image.open('Decryptor_Input/encrypted_image.png')
                 imgheight = int(img.height)
                 imgwidth = int(img.width)
+                res = int((imgwidth / 10) * (imgheight / 10))
                 if imgheight > 900 or imgwidth > 900:
                    print(Fore.RED+"[~CRYPT~] Image resolution too large (maximum 900x900).")
                    continue
@@ -28,19 +29,25 @@ def decryptor():
     # Invalid input error catching
     while True:
         try:
-            key = int(input(Fore.YELLOW+"[~CRYPT~] Input the image key (must be an integer between 1-255): "))
-            if key > 255 or key <= 1:
-                print(Fore.RED+"[~CRYPT~] Invalid input. Please input a number between 1 and 255.")
+            divi = input(Fore.YELLOW + "[~CRYPT~] Input three integers between 1-255 seperated by ',' to be the key (eg. 125,125,125): ")
+            x = divi.split(',')
+            usrkey = [int(item) for item in x]
+            if len(x) != 3:
+                print(Fore.RED + "[~CRYPT~] Invalid input.")
                 continue
+            for i in usrkey:
+                if i > 255 or i <= 0:
+                    print(Fore.RED + "[~CRYPT~] Invalid input.")
+                    break
+            else:
+                break
         except ValueError:
-            print(Fore.RED+"[~CRYPT~] Invalid input. Please input a number between 1 and 255.")
-        else:
-            break
+            print(Fore.RED + "[~CRYPT~] Invalid input.")
+            continue
 
     # Terminal Output
     print(Fore.YELLOW+"[~CRYPT~] The image Resolution is",Fore.LIGHTBLUE_EX+f"{int(imgwidth/10)} by {int(imgheight/10)} pixels ({imgwidth} by {imgheight} in true pixels).")
 
-    res = int((imgwidth/10)*(imgheight/10))
 
     # Binary To Pixel
     yplace = 0
@@ -52,19 +59,19 @@ def decryptor():
             xplace = 0
             yplace += 10
 
-        # Retrieve the red value from the raw rgb
-        rgb = str(img.getpixel((xplace, yplace)))
-        xl = rgb.split(',', 1)[0]
-        r = xl.strip('(')
+        # Retrieve each color value from the rgb
+        rgb = img.getpixel((xplace, yplace))
+        t = list(rgb)
+        rgbval = [int(item) for item in t]
 
-        if int(r) == 0:
+        if rgbval[0] == 0:
             binraw += ' '
             xplace += 10
             continue
-        if int(r) >= key+1:
+        if rgbval[0] >= usrkey[0]+1 and rgbval[1] >= usrkey[1]+1 and rgbval[2] >= usrkey[2]+1:
             binraw += '1'
             xplace += 10
-        if int(r) <= key:
+        else:
             binraw += '0'
             xplace += 10
 
